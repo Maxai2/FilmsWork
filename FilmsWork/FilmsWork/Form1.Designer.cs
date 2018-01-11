@@ -29,40 +29,38 @@
         private void InitializeComponent()
         {
             this.tlPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.lBox = new System.Windows.Forms.ListBox();
             this.tlPanelButton = new System.Windows.Forms.TableLayoutPanel();
             this.bAdd = new System.Windows.Forms.Button();
             this.bEdit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bAPI = new System.Windows.Forms.Button();
+            this.dGTable = new System.Windows.Forms.DataGridView();
+            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cGenre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
             this.SuspendLayout();
             // 
             // tlPanel
             // 
             this.tlPanel.ColumnCount = 2;
-            this.tlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPanel.Controls.Add(this.lBox, 0, 0);
+            this.tlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.07474F));
+            this.tlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.92526F));
             this.tlPanel.Controls.Add(this.tlPanelButton, 1, 1);
+            this.tlPanel.Controls.Add(this.dGTable, 0, 0);
             this.tlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPanel.Location = new System.Drawing.Point(0, 0);
             this.tlPanel.Name = "tlPanel";
             this.tlPanel.RowCount = 2;
             this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.6129F));
             this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.387096F));
+            this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlPanel.Size = new System.Drawing.Size(669, 465);
             this.tlPanel.TabIndex = 0;
-            // 
-            // lBox
-            // 
-            this.lBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBox.FormattingEnabled = true;
-            this.lBox.Location = new System.Drawing.Point(3, 3);
-            this.lBox.Name = "lBox";
-            this.tlPanel.SetRowSpan(this.lBox, 2);
-            this.lBox.Size = new System.Drawing.Size(328, 459);
-            this.lBox.TabIndex = 0;
             // 
             // tlPanelButton
             // 
@@ -72,9 +70,10 @@
             this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tlPanelButton.Controls.Add(this.bAdd, 0, 0);
             this.tlPanelButton.Controls.Add(this.bEdit, 1, 0);
-            this.tlPanelButton.Controls.Add(this.button1, 2, 0);
+            this.tlPanelButton.Controls.Add(this.bAPI, 2, 0);
             this.tlPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPanelButton.Location = new System.Drawing.Point(337, 428);
+            this.tlPanelButton.MaximumSize = new System.Drawing.Size(329, 34);
             this.tlPanelButton.MinimumSize = new System.Drawing.Size(329, 34);
             this.tlPanelButton.Name = "tlPanelButton";
             this.tlPanelButton.RowCount = 1;
@@ -105,16 +104,80 @@
             this.bEdit.Text = "Edit";
             this.bEdit.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // bAPI
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(237, 3);
-            this.button1.MinimumSize = new System.Drawing.Size(89, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 28);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bAPI.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bAPI.Location = new System.Drawing.Point(237, 3);
+            this.bAPI.MinimumSize = new System.Drawing.Size(89, 28);
+            this.bAPI.Name = "bAPI";
+            this.bAPI.Size = new System.Drawing.Size(89, 28);
+            this.bAPI.TabIndex = 1;
+            this.bAPI.Text = "API";
+            this.bAPI.UseVisualStyleBackColor = true;
+            // 
+            // dGTable
+            // 
+            this.dGTable.AllowUserToAddRows = false;
+            this.dGTable.AllowUserToDeleteRows = false;
+            this.dGTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cTitle,
+            this.cRuntime,
+            this.cGenre,
+            this.cYear,
+            this.cLanguage,
+            this.cViewed});
+            this.dGTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGTable.Location = new System.Drawing.Point(3, 3);
+            this.dGTable.Name = "dGTable";
+            this.dGTable.ReadOnly = true;
+            this.dGTable.RowHeadersWidth = 30;
+            this.tlPanel.SetRowSpan(this.dGTable, 2);
+            this.dGTable.Size = new System.Drawing.Size(328, 459);
+            this.dGTable.TabIndex = 2;
+            this.dGTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            this.cTitle.ReadOnly = true;
+            this.cTitle.Width = 30;
+            // 
+            // cRuntime
+            // 
+            this.cRuntime.HeaderText = "Runtime";
+            this.cRuntime.Name = "cRuntime";
+            this.cRuntime.ReadOnly = true;
+            this.cRuntime.Width = 50;
+            // 
+            // cGenre
+            // 
+            this.cGenre.HeaderText = "Genre";
+            this.cGenre.Name = "cGenre";
+            this.cGenre.ReadOnly = true;
+            this.cGenre.Width = 50;
+            // 
+            // cYear
+            // 
+            this.cYear.HeaderText = "Year";
+            this.cYear.Name = "cYear";
+            this.cYear.ReadOnly = true;
+            this.cYear.Width = 35;
+            // 
+            // cLanguage
+            // 
+            this.cLanguage.HeaderText = "Language";
+            this.cLanguage.Name = "cLanguage";
+            this.cLanguage.ReadOnly = true;
+            this.cLanguage.Width = 57;
+            // 
+            // cViewed
+            // 
+            this.cViewed.HeaderText = "Viewed";
+            this.cViewed.Name = "cViewed";
+            this.cViewed.ReadOnly = true;
+            this.cViewed.Width = 50;
             // 
             // FilmsView
             // 
@@ -127,6 +190,7 @@
             this.Text = "FilmsView";
             this.tlPanel.ResumeLayout(false);
             this.tlPanelButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,11 +198,17 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlPanel;
-        private System.Windows.Forms.ListBox lBox;
         private System.Windows.Forms.TableLayoutPanel tlPanelButton;
         private System.Windows.Forms.Button bAdd;
         private System.Windows.Forms.Button bEdit;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bAPI;
+        private System.Windows.Forms.DataGridView dGTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cRuntime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cGenre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cLanguage;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cViewed;
     }
 }
 
