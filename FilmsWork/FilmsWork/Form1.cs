@@ -10,23 +10,18 @@ using System.Windows.Forms;
 //-------------------------------------------------
 namespace FilmsWork
 {
-    List<Film> FilmList = new List<Film>();
-
     public partial class FilmsView : Form
-    {
+    {   
         public FilmsView()
         {
             InitializeComponent();
-        }
 
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
-        {
+            Film film = new Film("Lord", 2001, 123, "Horror", "English", "Peter", "", false);
+            Functions.getInstance().AddFilm(film);
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            
+            dGTable.Rows.Add(film.Title, film.Year);
+            dGTable.Rows.Add(film.Title, film.Year - 1);
         }
 
         private void bAdd_Click(object sender, EventArgs e)
@@ -41,6 +36,11 @@ namespace FilmsWork
                 Console.WriteLine("Cansel");
 
             add.Dispose();
+        }
+
+        private void lbDescription_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

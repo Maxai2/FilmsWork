@@ -34,11 +34,10 @@
             this.bEdit = new System.Windows.Forms.Button();
             this.bAPI = new System.Windows.Forms.Button();
             this.dGTable = new System.Windows.Forms.DataGridView();
+            this.lbDescription = new System.Windows.Forms.ListBox();
             this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lbDescription = new System.Windows.Forms.ListBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -72,7 +71,7 @@
             this.tlPanelButton.Controls.Add(this.bEdit, 1, 0);
             this.tlPanelButton.Controls.Add(this.bAPI, 2, 0);
             this.tlPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlPanelButton.Location = new System.Drawing.Point(337, 428);
+            this.tlPanelButton.Location = new System.Drawing.Point(338, 428);
             this.tlPanelButton.MaximumSize = new System.Drawing.Size(329, 34);
             this.tlPanelButton.MinimumSize = new System.Drawing.Size(329, 34);
             this.tlPanelButton.Name = "tlPanelButton";
@@ -89,7 +88,7 @@
             this.bAdd.MinimumSize = new System.Drawing.Size(90, 30);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(107, 30);
-            this.bAdd.TabIndex = 0;
+            this.bAdd.TabIndex = 2;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
@@ -101,7 +100,7 @@
             this.bEdit.MinimumSize = new System.Drawing.Size(90, 30);
             this.bEdit.Name = "bEdit";
             this.bEdit.Size = new System.Drawing.Size(107, 30);
-            this.bEdit.TabIndex = 0;
+            this.bEdit.TabIndex = 3;
             this.bEdit.Text = "Edit";
             this.bEdit.UseVisualStyleBackColor = true;
             // 
@@ -112,36 +111,43 @@
             this.bAPI.MinimumSize = new System.Drawing.Size(90, 30);
             this.bAPI.Name = "bAPI";
             this.bAPI.Size = new System.Drawing.Size(97, 30);
-            this.bAPI.TabIndex = 1;
+            this.bAPI.TabIndex = 4;
             this.bAPI.Text = "API";
             this.bAPI.UseVisualStyleBackColor = true;
             // 
             // dGTable
             // 
-            this.dGTable.AllowUserToAddRows = false;
             this.dGTable.AllowUserToDeleteRows = false;
+            this.dGTable.AllowUserToOrderColumns = true;
             this.dGTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cTitle,
             this.cRuntime,
-            this.cType,
             this.cViewed});
             this.dGTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dGTable.Location = new System.Drawing.Point(3, 3);
             this.dGTable.Name = "dGTable";
-            this.dGTable.ReadOnly = true;
             this.dGTable.RowHeadersWidth = 30;
             this.tlPanel.SetRowSpan(this.dGTable, 2);
-            this.dGTable.Size = new System.Drawing.Size(328, 459);
-            this.dGTable.TabIndex = 2;
-            this.dGTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dGTable.Size = new System.Drawing.Size(329, 459);
+            this.dGTable.TabIndex = 1;
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbDescription.FormattingEnabled = true;
+            this.lbDescription.Location = new System.Drawing.Point(338, 3);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(328, 419);
+            this.lbDescription.TabIndex = 3;
+            this.lbDescription.SelectedIndexChanged += new System.EventHandler(this.lbDescription_SelectedIndexChanged);
             // 
             // cTitle
             // 
             this.cTitle.HeaderText = "Title";
             this.cTitle.Name = "cTitle";
             this.cTitle.ReadOnly = true;
-            this.cTitle.Width = 30;
             // 
             // cRuntime
             // 
@@ -150,12 +156,6 @@
             this.cRuntime.ReadOnly = true;
             this.cRuntime.Width = 50;
             // 
-            // cType
-            // 
-            this.cType.HeaderText = "Type";
-            this.cType.Name = "cType";
-            this.cType.ReadOnly = true;
-            // 
             // cViewed
             // 
             this.cViewed.HeaderText = "Viewed";
@@ -163,23 +163,16 @@
             this.cViewed.ReadOnly = true;
             this.cViewed.Width = 50;
             // 
-            // lbDescription
-            // 
-            this.lbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbDescription.FormattingEnabled = true;
-            this.lbDescription.Location = new System.Drawing.Point(337, 3);
-            this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(329, 419);
-            this.lbDescription.TabIndex = 3;
-            // 
             // FilmsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 465);
             this.Controls.Add(this.tlPanel);
+            this.MaximumSize = new System.Drawing.Size(685, 504);
             this.MinimumSize = new System.Drawing.Size(685, 504);
             this.Name = "FilmsView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilmsView";
             this.tlPanel.ResumeLayout(false);
             this.tlPanelButton.ResumeLayout(false);
@@ -196,11 +189,10 @@
         private System.Windows.Forms.Button bEdit;
         private System.Windows.Forms.Button bAPI;
         private System.Windows.Forms.DataGridView dGTable;
+        private System.Windows.Forms.ListBox lbDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRuntime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cType;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cViewed;
-        private System.Windows.Forms.ListBox lbDescription;
     }
 }
 

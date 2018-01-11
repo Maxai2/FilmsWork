@@ -34,11 +34,9 @@
             this.lGenre = new System.Windows.Forms.Label();
             this.lLanguage = new System.Windows.Forms.Label();
             this.lDirector = new System.Windows.Forms.Label();
-            this.lType = new System.Windows.Forms.Label();
             this.lDescription = new System.Windows.Forms.Label();
             this.bOk = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
-            this.cBType = new System.Windows.Forms.ComboBox();
             this.rTBDescription = new System.Windows.Forms.RichTextBox();
             this.tBDirector = new System.Windows.Forms.TextBox();
             this.cBLanguage = new System.Windows.Forms.ComboBox();
@@ -48,6 +46,7 @@
             this.lYearN = new System.Windows.Forms.Label();
             this.tBTitle = new System.Windows.Forms.TextBox();
             this.lMinuete = new System.Windows.Forms.Label();
+            this.cBViewed = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lTytle
@@ -85,7 +84,6 @@
             this.lGenre.Size = new System.Drawing.Size(36, 13);
             this.lGenre.TabIndex = 3;
             this.lGenre.Text = "Genre";
-            this.lGenre.Click += new System.EventHandler(this.lGenre_Click);
             // 
             // lLanguage
             // 
@@ -105,19 +103,10 @@
             this.lDirector.TabIndex = 5;
             this.lDirector.Text = "Director";
             // 
-            // lType
-            // 
-            this.lType.AutoSize = true;
-            this.lType.Location = new System.Drawing.Point(10, 186);
-            this.lType.Name = "lType";
-            this.lType.Size = new System.Drawing.Size(31, 13);
-            this.lType.TabIndex = 6;
-            this.lType.Text = "Type";
-            // 
             // lDescription
             // 
             this.lDescription.AutoSize = true;
-            this.lDescription.Location = new System.Drawing.Point(10, 216);
+            this.lDescription.Location = new System.Drawing.Point(10, 184);
             this.lDescription.Name = "lDescription";
             this.lDescription.Size = new System.Drawing.Size(60, 13);
             this.lDescription.TabIndex = 7;
@@ -126,10 +115,10 @@
             // bOk
             // 
             this.bOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bOk.Location = new System.Drawing.Point(18, 315);
+            this.bOk.Location = new System.Drawing.Point(18, 301);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(75, 23);
-            this.bOk.TabIndex = 8;
+            this.bOk.TabIndex = 9;
             this.bOk.Text = "Ok";
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
@@ -137,27 +126,16 @@
             // bCancel
             // 
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(127, 315);
+            this.bCancel.Location = new System.Drawing.Point(127, 301);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
-            this.bCancel.TabIndex = 9;
+            this.bCancel.TabIndex = 10;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
             // 
-            // cBType
-            // 
-            this.cBType.FormattingEnabled = true;
-            this.cBType.Items.AddRange(new object[] {
-            "Movie",
-            "Serial"});
-            this.cBType.Location = new System.Drawing.Point(77, 186);
-            this.cBType.Name = "cBType";
-            this.cBType.Size = new System.Drawing.Size(134, 21);
-            this.cBType.TabIndex = 7;
-            // 
             // rTBDescription
             // 
-            this.rTBDescription.Location = new System.Drawing.Point(77, 216);
+            this.rTBDescription.Location = new System.Drawing.Point(77, 184);
             this.rTBDescription.Name = "rTBDescription";
             this.rTBDescription.Size = new System.Drawing.Size(134, 81);
             this.rTBDescription.TabIndex = 8;
@@ -218,7 +196,6 @@
             this.mtBRuntime.Size = new System.Drawing.Size(24, 20);
             this.mtBRuntime.TabIndex = 3;
             this.mtBRuntime.ValidatingType = typeof(int);
-            this.mtBRuntime.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
             // 
             // lYearN
             // 
@@ -245,11 +222,22 @@
             this.lMinuete.TabIndex = 20;
             this.lMinuete.Text = "min.";
             // 
+            // cBViewed
+            // 
+            this.cBViewed.AutoSize = true;
+            this.cBViewed.Location = new System.Drawing.Point(110, 271);
+            this.cBViewed.Name = "cBViewed";
+            this.cBViewed.Size = new System.Drawing.Size(61, 17);
+            this.cBViewed.TabIndex = 9;
+            this.cBViewed.Text = "Viewed";
+            this.cBViewed.UseVisualStyleBackColor = true;
+            // 
             // fAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(223, 348);
+            this.Controls.Add(this.cBViewed);
             this.Controls.Add(this.lMinuete);
             this.Controls.Add(this.tBTitle);
             this.Controls.Add(this.lYearN);
@@ -259,21 +247,20 @@
             this.Controls.Add(this.cBLanguage);
             this.Controls.Add(this.tBDirector);
             this.Controls.Add(this.rTBDescription);
-            this.Controls.Add(this.cBType);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bOk);
             this.Controls.Add(this.lDescription);
-            this.Controls.Add(this.lType);
             this.Controls.Add(this.lDirector);
             this.Controls.Add(this.lLanguage);
             this.Controls.Add(this.lGenre);
             this.Controls.Add(this.lRuntime);
             this.Controls.Add(this.lYear);
             this.Controls.Add(this.lTytle);
+            this.MaximumSize = new System.Drawing.Size(239, 387);
+            this.MinimumSize = new System.Drawing.Size(239, 387);
             this.Name = "fAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add";
-            this.Load += new System.EventHandler(this.fAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,11 +274,9 @@
         private System.Windows.Forms.Label lGenre;
         private System.Windows.Forms.Label lLanguage;
         private System.Windows.Forms.Label lDirector;
-        private System.Windows.Forms.Label lType;
         private System.Windows.Forms.Label lDescription;
         private System.Windows.Forms.Button bOk;
         private System.Windows.Forms.Button bCancel;
-        private System.Windows.Forms.ComboBox cBType;
         private System.Windows.Forms.RichTextBox rTBDescription;
         private System.Windows.Forms.TextBox tBDirector;
         private System.Windows.Forms.ComboBox cBLanguage;
@@ -301,5 +286,6 @@
         private System.Windows.Forms.Label lYearN;
         private System.Windows.Forms.TextBox tBTitle;
         private System.Windows.Forms.Label lMinuete;
+        private System.Windows.Forms.CheckBox cBViewed;
     }
 }

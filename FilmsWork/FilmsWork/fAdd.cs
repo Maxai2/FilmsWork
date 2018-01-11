@@ -17,24 +17,11 @@ namespace FilmsWork
             InitializeComponent();
         }
 
-        private void lGenre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fAdd_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
         private void bOk_Click(object sender, EventArgs e)
         {
-            Film temp = new Film()
+            Film temp = new Film(tBTitle.Text, Convert.ToInt32(mtBYear), Convert.ToInt32(mtBRuntime), cBGenre.Text, cBLanguage.Text, tBDirector.ToString(), rTBDescription.ToString(), Convert.ToBoolean(cBViewed));
+
+            Functions.getInstance().AddFilm(temp);
         }
     }
 }
