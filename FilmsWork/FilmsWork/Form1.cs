@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//-------------------------------------------------
 namespace FilmsWork
 {
+    List<Film> FilmList = new List<Film>();
+
     public partial class FilmsView : Form
     {
         public FilmsView()
@@ -26,5 +28,20 @@ namespace FilmsWork
         {
 
         }
+
+        private void bAdd_Click(object sender, EventArgs e)
+        {
+            fAdd add = new fAdd();
+            DialogResult dialogResult = add.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+                Console.WriteLine("Ok");
+            else
+            if (dialogResult == DialogResult.Cancel)
+                Console.WriteLine("Cansel");
+
+            add.Dispose();
+        }
     }
 }
+//-------------------------------------------------
