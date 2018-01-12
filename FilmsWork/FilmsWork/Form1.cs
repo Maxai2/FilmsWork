@@ -15,6 +15,7 @@ namespace FilmsWork
     public partial class FilmsView : Form
     {
         int listBeginnerCount = 0;
+
         public FilmsView()
         {
             InitializeComponent();
@@ -54,11 +55,16 @@ namespace FilmsWork
 
             add.Dispose();
 
-            dGTable.Rows.Clear();
-            dGTable.Refresh();
+            //dGTable.Rows.Clear();
 
-            for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
-                dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Year, Functions.getInstance().GetFilm(i).Viewed);
+            //for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
+            //    dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Year, Functions.getInstance().GetFilm(i).Viewed);
+
+            int lastIndex = Functions.getInstance().FilmCount() - 1;
+
+            dGTable.Rows.Add(Functions.getInstance().GetFilm(lastIndex).Title, Functions.getInstance().GetFilm(lastIndex).Runtime, Functions.getInstance().GetFilm(lastIndex).Viewed);
+
+            dGTable.Refresh();
         }
 
         private void FilmsView_FormClosing(object sender, FormClosingEventArgs e)
@@ -72,6 +78,11 @@ namespace FilmsWork
                     formatter.Serialize(fStream, Functions.getInstance().GetList());
                 }
             }
+        }
+
+        private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            lbDescription.Text += "!\n";
         }
     }
 }

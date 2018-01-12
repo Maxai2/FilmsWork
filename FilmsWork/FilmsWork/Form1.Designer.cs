@@ -134,6 +134,7 @@
             this.tlPanel.SetRowSpan(this.dGTable, 2);
             this.dGTable.Size = new System.Drawing.Size(329, 459);
             this.dGTable.TabIndex = 1;
+            this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
             // 
             // cTitle
             // 
