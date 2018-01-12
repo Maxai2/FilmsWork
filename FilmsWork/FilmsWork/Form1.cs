@@ -31,7 +31,7 @@ namespace FilmsWork
             //Functions.getInstance().AddFilm(film1);
 
             for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
-                dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Year, Functions.getInstance().GetFilm(i).Viewed);
+                dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
 
             dGTable.Refresh();
 
@@ -43,35 +43,28 @@ namespace FilmsWork
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            /*DialogResult dialogResult = */
-            //if (dialogResult == DialogResult.OK)
-            //    Console.WriteLine("Ok");
-            //else
-            //if (dialogResult == DialogResult.Cancel)
-            //    Console.WriteLine("Cansel");
+            Functions.getInstance().CancelAdd = true;
 
             fAdd add = new fAdd();
             add.ShowDialog();
 
             add.Dispose();
 
-            //dGTable.Rows.Clear();
+            if (Functions.getInstance().CancelAdd)
+            {
+                int lastIndex = Functions.getInstance().FilmCount() - 1;
 
-            //for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
-            //    dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Year, Functions.getInstance().GetFilm(i).Viewed);
+                dGTable.Rows.Add(Functions.getInstance().GetFilm(lastIndex).Title, Functions.getInstance().GetFilm(lastIndex).Runtime, Functions.getInstance().GetFilm(lastIndex).Viewed);
 
-            int lastIndex = Functions.getInstance().FilmCount() - 1;
-
-            dGTable.Rows.Add(Functions.getInstance().GetFilm(lastIndex).Title, Functions.getInstance().GetFilm(lastIndex).Runtime, Functions.getInstance().GetFilm(lastIndex).Viewed);
-
-            dGTable.Refresh();
+                dGTable.Refresh();
+            }
         }
 
         private void FilmsView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (listBeginnerCount != Functions.getInstance().FilmCount())
             {
-                using (var fStream = new FileStream("Films.dat", FileMode.Append))
+                using (var fStream = new FileStream("Films.dat", FileMode.OpenOrCreate))
                 {
                     BinaryFormatter formatter = new BinaryFormatter();
 
@@ -82,7 +75,17 @@ namespace FilmsWork
 
         private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            lbDescription.Text += "!\n";
+            lbDescription.Text += "Changed\n";
+        }
+
+        private void dGTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[e.RowIndex]);
+        }
+
+        private void dGTable_SelectionChanged(object sender, EventArgs e)
+        {
+            //lbDescription.Items.Add("Changed");
         }
     }
 }

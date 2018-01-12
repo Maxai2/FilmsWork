@@ -34,10 +34,10 @@
             this.bEdit = new System.Windows.Forms.Button();
             this.bAPI = new System.Windows.Forms.Button();
             this.dGTable = new System.Windows.Forms.DataGridView();
+            this.lbDescription = new System.Windows.Forms.ListBox();
             this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lbDescription = new System.Windows.Forms.ListBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -118,7 +118,6 @@
             // dGTable
             // 
             this.dGTable.AllowUserToAddRows = false;
-            this.dGTable.AllowUserToDeleteRows = false;
             this.dGTable.AllowUserToOrderColumns = true;
             this.dGTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -134,29 +133,9 @@
             this.tlPanel.SetRowSpan(this.dGTable, 2);
             this.dGTable.Size = new System.Drawing.Size(329, 459);
             this.dGTable.TabIndex = 1;
+            this.dGTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dGTable_RowsRemoved);
             this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            this.cTitle.ReadOnly = true;
-            this.cTitle.Width = 180;
-            // 
-            // cRuntime
-            // 
-            this.cRuntime.HeaderText = "Runtime";
-            this.cRuntime.Name = "cRuntime";
-            this.cRuntime.ReadOnly = true;
-            this.cRuntime.Width = 65;
-            // 
-            // cViewed
-            // 
-            this.cViewed.HeaderText = "Viewed";
-            this.cViewed.Name = "cViewed";
-            this.cViewed.ReadOnly = true;
-            this.cViewed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cViewed.Width = 57;
+            this.dGTable.SelectionChanged += new System.EventHandler(this.dGTable_SelectionChanged);
             // 
             // lbDescription
             // 
@@ -166,6 +145,28 @@
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(328, 419);
             this.lbDescription.TabIndex = 3;
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            this.cTitle.ReadOnly = true;
+            this.cTitle.Width = 170;
+            // 
+            // cRuntime
+            // 
+            this.cRuntime.HeaderText = "Runtime(min.)";
+            this.cRuntime.Name = "cRuntime";
+            this.cRuntime.ReadOnly = true;
+            this.cRuntime.Width = 75;
+            // 
+            // cViewed
+            // 
+            this.cViewed.HeaderText = "Viewed";
+            this.cViewed.Name = "cViewed";
+            this.cViewed.ReadOnly = true;
+            this.cViewed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cViewed.Width = 57;
             // 
             // FilmsView
             // 

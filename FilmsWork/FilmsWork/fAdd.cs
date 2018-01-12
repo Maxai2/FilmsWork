@@ -23,6 +23,11 @@ namespace FilmsWork
 
             Functions.getInstance().AddFilm(temp);
         }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            Functions.getInstance().CancelAdd = false;
+        }
     }
 }
 //-------------------------------------------------

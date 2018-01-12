@@ -132,6 +132,7 @@
             this.bCancel.TabIndex = 10;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // rTBDescription
             // 
@@ -237,6 +238,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(223, 348);
+            this.ControlBox = false;
             this.Controls.Add(this.cBViewed);
             this.Controls.Add(this.lMinuete);
             this.Controls.Add(this.tBTitle);
@@ -256,7 +258,9 @@
             this.Controls.Add(this.lRuntime);
             this.Controls.Add(this.lYear);
             this.Controls.Add(this.lTytle);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(239, 387);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(239, 387);
             this.Name = "fAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

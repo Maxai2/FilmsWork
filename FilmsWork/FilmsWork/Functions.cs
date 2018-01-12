@@ -22,6 +22,8 @@ namespace FilmsWork
             return instance;
         }
 
+        public bool CancelAdd { get; set; }
+
         static List<Film> FilmList = new List<Film>();
 
         public void AddFilm(Film film) => FilmList.Add(film);
