@@ -17,9 +17,9 @@ namespace FilmsWork
             InitializeComponent();
         }
 
-        private void bOk_Click(object sender, EventArgs e)
+        private void bOk_Click(object sender, EventArgs e)  
         {
-            Film temp = new Film(tBTitle.Text, Convert.ToInt32(mtBYear), Convert.ToInt32(mtBRuntime), cBGenre.Text, cBLanguage.Text, tBDirector.ToString(), rTBDescription.ToString(), Convert.ToBoolean(cBViewed));
+            Film temp = new Film(tBTitle.Text, Convert.ToInt32(mtBYear.Text), Convert.ToInt32(mtBRuntime.Text), cBGenre.Text, cBLanguage.Text, tBDirector.Text, rTBDescription.Text, cBViewed.Checked);
 
             Functions.getInstance().AddFilm(temp);
         }

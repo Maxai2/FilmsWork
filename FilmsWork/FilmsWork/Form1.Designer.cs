@@ -34,10 +34,10 @@
             this.bEdit = new System.Windows.Forms.Button();
             this.bAPI = new System.Windows.Forms.Button();
             this.dGTable = new System.Windows.Forms.DataGridView();
-            this.lbDescription = new System.Windows.Forms.ListBox();
             this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lbDescription = new System.Windows.Forms.ListBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -117,6 +117,7 @@
             // 
             // dGTable
             // 
+            this.dGTable.AllowUserToAddRows = false;
             this.dGTable.AllowUserToDeleteRows = false;
             this.dGTable.AllowUserToOrderColumns = true;
             this.dGTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -125,13 +126,36 @@
             this.cRuntime,
             this.cViewed});
             this.dGTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dGTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dGTable.Location = new System.Drawing.Point(3, 3);
             this.dGTable.Name = "dGTable";
-            this.dGTable.RowHeadersWidth = 30;
+            this.dGTable.ReadOnly = true;
+            this.dGTable.RowHeadersWidth = 25;
             this.tlPanel.SetRowSpan(this.dGTable, 2);
             this.dGTable.Size = new System.Drawing.Size(329, 459);
             this.dGTable.TabIndex = 1;
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            this.cTitle.ReadOnly = true;
+            this.cTitle.Width = 180;
+            // 
+            // cRuntime
+            // 
+            this.cRuntime.HeaderText = "Runtime";
+            this.cRuntime.Name = "cRuntime";
+            this.cRuntime.ReadOnly = true;
+            this.cRuntime.Width = 65;
+            // 
+            // cViewed
+            // 
+            this.cViewed.HeaderText = "Viewed";
+            this.cViewed.Name = "cViewed";
+            this.cViewed.ReadOnly = true;
+            this.cViewed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cViewed.Width = 57;
             // 
             // lbDescription
             // 
@@ -141,27 +165,6 @@
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(328, 419);
             this.lbDescription.TabIndex = 3;
-            this.lbDescription.SelectedIndexChanged += new System.EventHandler(this.lbDescription_SelectedIndexChanged);
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            this.cTitle.ReadOnly = true;
-            // 
-            // cRuntime
-            // 
-            this.cRuntime.HeaderText = "Runtime";
-            this.cRuntime.Name = "cRuntime";
-            this.cRuntime.ReadOnly = true;
-            this.cRuntime.Width = 50;
-            // 
-            // cViewed
-            // 
-            this.cViewed.HeaderText = "Viewed";
-            this.cViewed.Name = "cViewed";
-            this.cViewed.ReadOnly = true;
-            this.cViewed.Width = 50;
             // 
             // FilmsView
             // 
@@ -174,6 +177,7 @@
             this.Name = "FilmsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilmsView";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FilmsView_FormClosing);
             this.tlPanel.ResumeLayout(false);
             this.tlPanelButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).EndInit();
