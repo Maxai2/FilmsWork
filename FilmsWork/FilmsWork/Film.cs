@@ -17,8 +17,9 @@ namespace FilmsWork
         public string Director { get; set; }
         public string Description { get; set; }
         public bool Viewed { get; set; }
+        public string PicturePath { get; set; }
 
-        public Film(string Title, int Year, int Runtime, string Genre, string Language, string Director, string Description, bool Viewed)
+        public Film(string Title, int Year, int Runtime, string Genre, string Language, string Director, string Description, bool Viewed, string PicturePath)
         {
             this.Title = Title;
             this.Year = Year;
@@ -28,6 +29,7 @@ namespace FilmsWork
             this.Director = Director;
             this.Description = Description;
             this.Viewed = Viewed;
+            this.PicturePath = PicturePath;
         }
     }
 }

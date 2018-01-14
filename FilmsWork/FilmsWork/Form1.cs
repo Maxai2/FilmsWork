@@ -75,7 +75,24 @@ namespace FilmsWork
 
         private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            lbDescription.Text += "Changed\n";
+            lbDescription.Items.Clear();
+
+            if (dGTable.CurrentRow != null)
+            {
+                //if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title != dGTable.FirstDisplayedCell.Value)
+                //{
+
+                lbDescription.Items.Add($"Title:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
+                lbDescription.Items.Add($"Year:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
+                lbDescription.Items.Add($"Genre:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
+                lbDescription.Items.Add($"Language:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Language}");
+                lbDescription.Items.Add($"Director(s):\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
+                lbDescription.Items.Add($"Description:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description}");
+
+                pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
+                //}
+
+            }
         }
 
         private void dGTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -85,7 +102,9 @@ namespace FilmsWork
 
         private void dGTable_SelectionChanged(object sender, EventArgs e)
         {
-            //lbDescription.Items.Add("Changed");
+            //lbDescription.Items.Add($"Title: {Functions.getInstance().GetList()[]}");
+
+
         }
     }
 }
