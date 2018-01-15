@@ -45,7 +45,7 @@ namespace FilmsWork
         {
             Functions.getInstance().CancelAdd = true;
 
-            fAdd add = new fAdd();
+            fAddEdit add = new fAddEdit();
             add.ShowDialog();
 
             add.Dispose();
@@ -79,19 +79,19 @@ namespace FilmsWork
 
             if (dGTable.CurrentRow != null)
             {
+                Functions.getInstance().SelectedIndexForEdit = dGTable.CurrentRow.Index;
                 //if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title != dGTable.FirstDisplayedCell.Value)
                 //{
 
-                lbDescription.Items.Add($"Title:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
-                lbDescription.Items.Add($"Year:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
-                lbDescription.Items.Add($"Genre:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
+                lbDescription.Items.Add($"Title:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
+                lbDescription.Items.Add($"Year:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
+                lbDescription.Items.Add($"Genre:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
                 lbDescription.Items.Add($"Language:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Language}");
                 lbDescription.Items.Add($"Director(s):\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
                 lbDescription.Items.Add($"Description:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description}");
 
-                pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
+                //pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
                 //}
-
             }
         }
 
@@ -100,11 +100,16 @@ namespace FilmsWork
             Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[e.RowIndex]);
         }
 
-        private void dGTable_SelectionChanged(object sender, EventArgs e)
+        private void bEdit_Click(object sender, EventArgs e)
         {
-            //lbDescription.Items.Add($"Title: {Functions.getInstance().GetList()[]}");
+            Functions.getInstance().EditChange = true;
+            fAddEdit edit = new fAddEdit();
+            edit.Text = "Edit";
 
+            edit.ShowDialog();
 
+            edit.Dispose();
+            Functions.getInstance().EditChange = false;
         }
     }
 }

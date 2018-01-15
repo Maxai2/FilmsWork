@@ -38,8 +38,8 @@
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pDescriptionPhoto = new System.Windows.Forms.Panel();
-            this.lbDescription = new System.Windows.Forms.ListBox();
             this.pbPicture = new System.Windows.Forms.PictureBox();
+            this.lbDescription = new System.Windows.Forms.ListBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -57,13 +57,12 @@
             this.tlPanel.Controls.Add(this.pDescriptionPhoto, 1, 0);
             this.tlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPanel.Location = new System.Drawing.Point(0, 0);
-            this.tlPanel.Margin = new System.Windows.Forms.Padding(4);
             this.tlPanel.Name = "tlPanel";
             this.tlPanel.RowCount = 2;
             this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.6129F));
             this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.387096F));
-            this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tlPanel.Size = new System.Drawing.Size(889, 562);
+            this.tlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlPanel.Size = new System.Drawing.Size(668, 463);
             this.tlPanel.TabIndex = 0;
             // 
             // tlPanelButton
@@ -71,30 +70,28 @@
             this.tlPanelButton.ColumnCount = 3;
             this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tlPanelButton.Controls.Add(this.bAdd, 0, 0);
             this.tlPanelButton.Controls.Add(this.bEdit, 1, 0);
             this.tlPanelButton.Controls.Add(this.bAPI, 2, 0);
             this.tlPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlPanelButton.Location = new System.Drawing.Point(449, 518);
-            this.tlPanelButton.Margin = new System.Windows.Forms.Padding(4);
-            this.tlPanelButton.MaximumSize = new System.Drawing.Size(439, 42);
-            this.tlPanelButton.MinimumSize = new System.Drawing.Size(439, 42);
+            this.tlPanelButton.Location = new System.Drawing.Point(337, 427);
+            this.tlPanelButton.MaximumSize = new System.Drawing.Size(329, 34);
+            this.tlPanelButton.MinimumSize = new System.Drawing.Size(329, 34);
             this.tlPanelButton.Name = "tlPanelButton";
             this.tlPanelButton.RowCount = 1;
             this.tlPanelButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlPanelButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPanelButton.Size = new System.Drawing.Size(439, 42);
+            this.tlPanelButton.Size = new System.Drawing.Size(329, 34);
             this.tlPanelButton.TabIndex = 1;
             // 
             // bAdd
             // 
             this.bAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bAdd.Location = new System.Drawing.Point(4, 4);
-            this.bAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.bAdd.MinimumSize = new System.Drawing.Size(120, 37);
+            this.bAdd.Location = new System.Drawing.Point(3, 3);
+            this.bAdd.MinimumSize = new System.Drawing.Size(90, 30);
             this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(143, 37);
+            this.bAdd.Size = new System.Drawing.Size(107, 30);
             this.bAdd.TabIndex = 2;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = true;
@@ -103,23 +100,22 @@
             // bEdit
             // 
             this.bEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bEdit.Location = new System.Drawing.Point(155, 4);
-            this.bEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.bEdit.MinimumSize = new System.Drawing.Size(120, 37);
+            this.bEdit.Location = new System.Drawing.Point(116, 3);
+            this.bEdit.MinimumSize = new System.Drawing.Size(90, 30);
             this.bEdit.Name = "bEdit";
-            this.bEdit.Size = new System.Drawing.Size(143, 37);
+            this.bEdit.Size = new System.Drawing.Size(107, 30);
             this.bEdit.TabIndex = 3;
             this.bEdit.Text = "Edit";
             this.bEdit.UseVisualStyleBackColor = true;
+            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
             // 
             // bAPI
             // 
             this.bAPI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bAPI.Location = new System.Drawing.Point(306, 4);
-            this.bAPI.Margin = new System.Windows.Forms.Padding(4);
-            this.bAPI.MinimumSize = new System.Drawing.Size(120, 37);
+            this.bAPI.Location = new System.Drawing.Point(229, 3);
+            this.bAPI.MinimumSize = new System.Drawing.Size(90, 30);
             this.bAPI.Name = "bAPI";
-            this.bAPI.Size = new System.Drawing.Size(129, 37);
+            this.bAPI.Size = new System.Drawing.Size(97, 30);
             this.bAPI.TabIndex = 4;
             this.bAPI.Text = "API";
             this.bAPI.UseVisualStyleBackColor = true;
@@ -134,19 +130,17 @@
             this.cViewed});
             this.dGTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dGTable.Location = new System.Drawing.Point(4, 4);
-            this.dGTable.Margin = new System.Windows.Forms.Padding(4);
+            this.dGTable.Location = new System.Drawing.Point(3, 3);
             this.dGTable.Name = "dGTable";
             this.dGTable.ReadOnly = true;
             this.dGTable.RowHeadersWidth = 25;
             this.tlPanel.SetRowSpan(this.dGTable, 2);
             this.dGTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGTable.Size = new System.Drawing.Size(437, 554);
+            this.dGTable.Size = new System.Drawing.Size(328, 457);
             this.dGTable.TabIndex = 1;
             this.dGTable.TabStop = false;
             this.dGTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dGTable_RowsRemoved);
             this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
-            this.dGTable.SelectionChanged += new System.EventHandler(this.dGTable_SelectionChanged);
             // 
             // cTitle
             // 
@@ -175,39 +169,40 @@
             this.pDescriptionPhoto.Controls.Add(this.pbPicture);
             this.pDescriptionPhoto.Controls.Add(this.lbDescription);
             this.pDescriptionPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDescriptionPhoto.Location = new System.Drawing.Point(448, 3);
+            this.pDescriptionPhoto.Location = new System.Drawing.Point(336, 2);
+            this.pDescriptionPhoto.Margin = new System.Windows.Forms.Padding(2);
             this.pDescriptionPhoto.Name = "pDescriptionPhoto";
-            this.pDescriptionPhoto.Size = new System.Drawing.Size(438, 508);
+            this.pDescriptionPhoto.Size = new System.Drawing.Size(330, 420);
             this.pDescriptionPhoto.TabIndex = 2;
+            // 
+            // pbPicture
+            // 
+            this.pbPicture.Location = new System.Drawing.Point(216, 7);
+            this.pbPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.pbPicture.Name = "pbPicture";
+            this.pbPicture.Size = new System.Drawing.Size(106, 177);
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPicture.TabIndex = 1;
+            this.pbPicture.TabStop = false;
             // 
             // lbDescription
             // 
             this.lbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbDescription.FormattingEnabled = true;
-            this.lbDescription.ItemHeight = 16;
             this.lbDescription.Location = new System.Drawing.Point(0, 0);
+            this.lbDescription.Margin = new System.Windows.Forms.Padding(2);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(438, 508);
+            this.lbDescription.Size = new System.Drawing.Size(330, 420);
             this.lbDescription.TabIndex = 0;
-            // 
-            // pbPicture
-            // 
-            this.pbPicture.Location = new System.Drawing.Point(288, 9);
-            this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(141, 218);
-            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPicture.TabIndex = 1;
-            this.pbPicture.TabStop = false;
             // 
             // FilmsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 562);
+            this.ClientSize = new System.Drawing.Size(668, 463);
             this.Controls.Add(this.tlPanel);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(907, 609);
-            this.MinimumSize = new System.Drawing.Size(907, 609);
+            this.MaximumSize = new System.Drawing.Size(684, 502);
+            this.MinimumSize = new System.Drawing.Size(684, 502);
             this.Name = "FilmsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilmsView";

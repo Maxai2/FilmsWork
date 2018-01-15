@@ -24,6 +24,10 @@ namespace FilmsWork
 
         public bool CancelAdd { get; set; }
 
+        public bool EditChange { get; set; }
+
+        public int SelectedIndexForEdit { get; set; }
+
         static List<Film> FilmList = new List<Film>();
 
         public void AddFilm(Film film) => FilmList.Add(film);
