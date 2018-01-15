@@ -25,11 +25,6 @@ namespace FilmsWork
 
             Functions.getInstance().LoadList();
 
-            //Film film = new Film("Lord", 2001, 123, "Horror", "English", "Peter", "", true);
-            //Film film1 = new Film("B Movie", 2012, 153, "Comedy", "Russian", "", "", false);
-            //Functions.getInstance().AddFilm(film);
-            //Functions.getInstance().AddFilm(film1);
-
             for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
                 dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
 
@@ -38,7 +33,6 @@ namespace FilmsWork
             NOLOAD:
 
             listBeginnerCount = Functions.getInstance().FilmCount();
-            return;
         }
 
         private void bAdd_Click(object sender, EventArgs e)
@@ -62,6 +56,11 @@ namespace FilmsWork
 
         private void FilmsView_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (Functions.getInstance().FilmCount() == 0)
+            {
+                File.Delete("Films.dat");
+                return;
+            }
             if (listBeginnerCount != Functions.getInstance().FilmCount())
             {
                 using (var fStream = new FileStream("Films.dat", FileMode.OpenOrCreate))
@@ -90,7 +89,11 @@ namespace FilmsWork
                 lbDescription.Items.Add($"Director(s):\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
                 lbDescription.Items.Add($"Description:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description}");
 
-                //pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
+                if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != null && Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != "")
+                {
+                    pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
+                    pbPicture.Invalidate();
+                }
                 //}
             }
         }
@@ -98,10 +101,17 @@ namespace FilmsWork
         private void dGTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[e.RowIndex]);
+            pbPicture.Image = null;
+            pbPicture.Invalidate();
         }
 
         private void bEdit_Click(object sender, EventArgs e)
         {
+            if (Functions.getInstance().FilmCount() == 0)
+            {
+                MessageBox.Show("No films to edit!");
+                return;
+            }
             Functions.getInstance().EditChange = true;
             fAddEdit edit = new fAddEdit();
             edit.Text = "Edit";

@@ -32,7 +32,7 @@
             this.tlPanelButton = new System.Windows.Forms.TableLayoutPanel();
             this.bAdd = new System.Windows.Forms.Button();
             this.bEdit = new System.Windows.Forms.Button();
-            this.bAPI = new System.Windows.Forms.Button();
+            this.bSearch = new System.Windows.Forms.Button();
             this.dGTable = new System.Windows.Forms.DataGridView();
             this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +73,7 @@
             this.tlPanelButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tlPanelButton.Controls.Add(this.bAdd, 0, 0);
             this.tlPanelButton.Controls.Add(this.bEdit, 1, 0);
-            this.tlPanelButton.Controls.Add(this.bAPI, 2, 0);
+            this.tlPanelButton.Controls.Add(this.bSearch, 2, 0);
             this.tlPanelButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPanelButton.Location = new System.Drawing.Point(337, 427);
             this.tlPanelButton.MaximumSize = new System.Drawing.Size(329, 34);
@@ -109,16 +109,16 @@
             this.bEdit.UseVisualStyleBackColor = true;
             this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
             // 
-            // bAPI
+            // bSearch
             // 
-            this.bAPI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bAPI.Location = new System.Drawing.Point(229, 3);
-            this.bAPI.MinimumSize = new System.Drawing.Size(90, 30);
-            this.bAPI.Name = "bAPI";
-            this.bAPI.Size = new System.Drawing.Size(97, 30);
-            this.bAPI.TabIndex = 4;
-            this.bAPI.Text = "API";
-            this.bAPI.UseVisualStyleBackColor = true;
+            this.bSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bSearch.Location = new System.Drawing.Point(229, 3);
+            this.bSearch.MinimumSize = new System.Drawing.Size(90, 30);
+            this.bSearch.Name = "bSearch";
+            this.bSearch.Size = new System.Drawing.Size(97, 30);
+            this.bSearch.TabIndex = 4;
+            this.bSearch.Text = "Search";
+            this.bSearch.UseVisualStyleBackColor = true;
             // 
             // dGTable
             // 
@@ -139,7 +139,6 @@
             this.dGTable.Size = new System.Drawing.Size(328, 457);
             this.dGTable.TabIndex = 1;
             this.dGTable.TabStop = false;
-            this.dGTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dGTable_RowsRemoved);
             this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
             // 
             // cTitle
@@ -222,7 +221,7 @@
         private System.Windows.Forms.TableLayoutPanel tlPanelButton;
         private System.Windows.Forms.Button bAdd;
         private System.Windows.Forms.Button bEdit;
-        private System.Windows.Forms.Button bAPI;
+        private System.Windows.Forms.Button bSearch;
         private System.Windows.Forms.DataGridView dGTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRuntime;
