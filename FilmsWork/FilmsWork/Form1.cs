@@ -54,7 +54,7 @@ namespace FilmsWork
                 dGTable.Refresh();
             }
         }
-
+         
         private void FilmsView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Functions.getInstance().FilmCount() == 0)
@@ -83,12 +83,15 @@ namespace FilmsWork
                 //if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title != dGTable.FirstDisplayedCell.Value)
                 //{
 
-                lbDescription.Items.Add($"Title:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
-                lbDescription.Items.Add($"Year:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
-                lbDescription.Items.Add($"Genre:\t\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
-                lbDescription.Items.Add($"Language:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Language}");
-                lbDescription.Items.Add($"Director(s):\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
-                lbDescription.Items.Add($"Description:\t{Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description}");
+                //rTBTitle.Text = Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title;
+
+                lbDescription.Items.Add($"Title: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
+                lbDescription.Items.Add($"Year: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
+                lbDescription.Items.Add($"Genre: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
+                lbDescription.Items.Add($"Language: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Language}");
+                lbDescription.Items.Add($"Director(s): {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
+
+                rTBdescription.Text = Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description;
 
                 if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != null && Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != "")
                 {

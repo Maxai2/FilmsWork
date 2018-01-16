@@ -40,6 +40,7 @@
             this.pDescriptionPhoto = new System.Windows.Forms.Panel();
             this.pbPicture = new System.Windows.Forms.PictureBox();
             this.lbDescription = new System.Windows.Forms.ListBox();
+            this.rTBdescription = new System.Windows.Forms.RichTextBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -165,6 +166,7 @@
             // 
             // pDescriptionPhoto
             // 
+            this.pDescriptionPhoto.Controls.Add(this.rTBdescription);
             this.pDescriptionPhoto.Controls.Add(this.pbPicture);
             this.pDescriptionPhoto.Controls.Add(this.lbDescription);
             this.pDescriptionPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -176,23 +178,30 @@
             // 
             // pbPicture
             // 
-            this.pbPicture.Location = new System.Drawing.Point(216, 7);
+            this.pbPicture.Location = new System.Drawing.Point(4, 9);
             this.pbPicture.Margin = new System.Windows.Forms.Padding(2);
             this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(106, 177);
+            this.pbPicture.Size = new System.Drawing.Size(106, 186);
             this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPicture.TabIndex = 1;
             this.pbPicture.TabStop = false;
             // 
             // lbDescription
             // 
-            this.lbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbDescription.FormattingEnabled = true;
-            this.lbDescription.Location = new System.Drawing.Point(0, 0);
+            this.lbDescription.Location = new System.Drawing.Point(117, 9);
             this.lbDescription.Margin = new System.Windows.Forms.Padding(2);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(330, 420);
+            this.lbDescription.Size = new System.Drawing.Size(207, 186);
             this.lbDescription.TabIndex = 0;
+            // 
+            // rTBdescription
+            // 
+            this.rTBdescription.Location = new System.Drawing.Point(3, 200);
+            this.rTBdescription.Name = "rTBdescription";
+            this.rTBdescription.Size = new System.Drawing.Size(318, 217);
+            this.rTBdescription.TabIndex = 2;
+            this.rTBdescription.Text = "";
             // 
             // FilmsView
             // 
@@ -229,6 +238,7 @@
         private System.Windows.Forms.Panel pDescriptionPhoto;
         private System.Windows.Forms.PictureBox pbPicture;
         private System.Windows.Forms.ListBox lbDescription;
+        private System.Windows.Forms.RichTextBox rTBdescription;
     }
 }
 

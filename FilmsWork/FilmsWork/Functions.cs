@@ -17,7 +17,7 @@ namespace FilmsWork
 
         public static Functions getInstance()
         {
-            if (instance == null)
+            if (instance == null) 
                 instance = new Functions();
             return instance;
         }

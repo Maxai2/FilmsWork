@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 //-------------------------------------------------
 namespace FilmsWork
 {
-    [Serializable]
+    [Serializable] 
     class Film
     {
         public string Title { get; set; }

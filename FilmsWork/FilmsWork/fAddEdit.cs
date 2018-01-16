@@ -76,7 +76,7 @@ namespace FilmsWork
                 }
             }
         }
-
+         
         private void bSearch_Click(object sender, EventArgs e)
         {
             using (WebClient webClient = new WebClient())
@@ -95,6 +95,10 @@ namespace FilmsWork
                     MessageBox.Show((string)obj.Error);
                     return;
                 }
+
+                if (!File.Exists(@"pics\"))
+                    Directory.CreateDirectory(@"pics\");
+
                 webClient.DownloadFile((string)obj.Poster, $@"pics\{obj.imdbID}.jpg");
                 pbSearchResult.Image = Image.FromFile($@"pics\{obj.imdbID}.jpg");
                 tBTitle.Text = obj.Title;
@@ -103,8 +107,11 @@ namespace FilmsWork
                 cBGenre.Text = obj.Genre;
                 cBLanguage.Text = obj.Language;
                 tBDirector.Text = obj.Director;
-                rTBDescription.Text = obj.Description;
-                tbPicPath.Text = Application.ExecutablePath + "pics\\" + obj.imdbID + ".jpg";
+                rTBDescription.Text = obj.Plot;
+                tbPicPath.Text = Application.ExecutablePath;
+                int length = tbPicPath.Text.Length;
+                tbPicPath.Text = tbPicPath.Text.Remove(length - 13);
+                tbPicPath.Text += "pics\\" + obj.imdbID + ".jpg";
             }
         }
     }
