@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,12 +65,46 @@ namespace FilmsWork
                 try
                 {
                     if ((myStream = openFileDialog.OpenFile()) != null)
-                            tbPicPath.Text = openFileDialog.FileName;
+                    {
+                        tbPicPath.Text = openFileDialog.FileName;
+                        pbSearchResult.Image = Image.FromFile(openFileDialog.FileName);
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
+            }
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                var uri = new Uri($@"http://www.omdbapi.com/?apikey=dbf23902");
+                uri = uri.AddParameter("t", tbSearch.Text);
+                var data = webClient.DownloadString(uri);
+                //richTextBox1.Text = data;
+                //tbSearch.Text = data;
+
+                dynamic obj = JObject.Parse(data);
+                //richTextBox1.Text = obj.Title;
+
+                if (obj.Response == "False")
+                {
+                    MessageBox.Show((string)obj.Error);
+                    return;
+                }
+                webClient.DownloadFile((string)obj.Poster, $@"pics\{obj.imdbID}.jpg");
+                pbSearchResult.Image = Image.FromFile($@"pics\{obj.imdbID}.jpg");
+                tBTitle.Text = obj.Title;
+                mtBYear.Text = obj.Year;
+                mtBRuntime.Text = obj.Runtime;
+                cBGenre.Text = obj.Genre;
+                cBLanguage.Text = obj.Language;
+                tBDirector.Text = obj.Director;
+                rTBDescription.Text = obj.Description;
+                tbPicPath.Text = Application.ExecutablePath + "pics\\" + obj.imdbID + ".jpg";
             }
         }
     }

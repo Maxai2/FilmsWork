@@ -46,6 +46,7 @@ namespace FilmsWork
 
             if (Functions.getInstance().CancelAdd)
             {
+                dGTable.Invalidate();
                 int lastIndex = Functions.getInstance().FilmCount() - 1;
 
                 dGTable.Rows.Add(Functions.getInstance().GetFilm(lastIndex).Title, Functions.getInstance().GetFilm(lastIndex).Runtime, Functions.getInstance().GetFilm(lastIndex).Viewed);

@@ -49,12 +49,16 @@
             this.cBViewed = new System.Windows.Forms.CheckBox();
             this.bAddPic = new System.Windows.Forms.Button();
             this.tbPicPath = new System.Windows.Forms.TextBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.bSearch = new System.Windows.Forms.Button();
+            this.pbSearchResult = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearchResult)).BeginInit();
             this.SuspendLayout();
             // 
             // lTytle
             // 
             this.lTytle.AutoSize = true;
-            this.lTytle.Location = new System.Drawing.Point(10, 15);
+            this.lTytle.Location = new System.Drawing.Point(10, 186);
             this.lTytle.Name = "lTytle";
             this.lTytle.Size = new System.Drawing.Size(27, 13);
             this.lTytle.TabIndex = 0;
@@ -63,7 +67,7 @@
             // lYear
             // 
             this.lYear.AutoSize = true;
-            this.lYear.Location = new System.Drawing.Point(10, 42);
+            this.lYear.Location = new System.Drawing.Point(10, 213);
             this.lYear.Name = "lYear";
             this.lYear.Size = new System.Drawing.Size(29, 13);
             this.lYear.TabIndex = 1;
@@ -72,7 +76,7 @@
             // lRuntime
             // 
             this.lRuntime.AutoSize = true;
-            this.lRuntime.Location = new System.Drawing.Point(10, 67);
+            this.lRuntime.Location = new System.Drawing.Point(10, 238);
             this.lRuntime.Name = "lRuntime";
             this.lRuntime.Size = new System.Drawing.Size(46, 13);
             this.lRuntime.TabIndex = 2;
@@ -81,7 +85,7 @@
             // lGenre
             // 
             this.lGenre.AutoSize = true;
-            this.lGenre.Location = new System.Drawing.Point(10, 95);
+            this.lGenre.Location = new System.Drawing.Point(10, 266);
             this.lGenre.Name = "lGenre";
             this.lGenre.Size = new System.Drawing.Size(36, 13);
             this.lGenre.TabIndex = 3;
@@ -90,7 +94,7 @@
             // lLanguage
             // 
             this.lLanguage.AutoSize = true;
-            this.lLanguage.Location = new System.Drawing.Point(10, 124);
+            this.lLanguage.Location = new System.Drawing.Point(10, 295);
             this.lLanguage.Name = "lLanguage";
             this.lLanguage.Size = new System.Drawing.Size(55, 13);
             this.lLanguage.TabIndex = 4;
@@ -99,7 +103,7 @@
             // lDirector
             // 
             this.lDirector.AutoSize = true;
-            this.lDirector.Location = new System.Drawing.Point(10, 155);
+            this.lDirector.Location = new System.Drawing.Point(10, 326);
             this.lDirector.Name = "lDirector";
             this.lDirector.Size = new System.Drawing.Size(44, 13);
             this.lDirector.TabIndex = 5;
@@ -108,7 +112,7 @@
             // lDescription
             // 
             this.lDescription.AutoSize = true;
-            this.lDescription.Location = new System.Drawing.Point(10, 184);
+            this.lDescription.Location = new System.Drawing.Point(10, 355);
             this.lDescription.Name = "lDescription";
             this.lDescription.Size = new System.Drawing.Size(60, 13);
             this.lDescription.TabIndex = 7;
@@ -117,10 +121,10 @@
             // bOk
             // 
             this.bOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bOk.Location = new System.Drawing.Point(18, 345);
+            this.bOk.Location = new System.Drawing.Point(18, 494);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(75, 23);
-            this.bOk.TabIndex = 11;
+            this.bOk.TabIndex = 12;
             this.bOk.Text = "Ok";
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);
@@ -128,30 +132,30 @@
             // bCancel
             // 
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(127, 345);
+            this.bCancel.Location = new System.Drawing.Point(127, 494);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
-            this.bCancel.TabIndex = 12;
+            this.bCancel.TabIndex = 13;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // rTBDescription
             // 
-            this.rTBDescription.Location = new System.Drawing.Point(77, 184);
+            this.rTBDescription.Location = new System.Drawing.Point(77, 355);
             this.rTBDescription.Name = "rTBDescription";
             this.rTBDescription.Size = new System.Drawing.Size(134, 81);
-            this.rTBDescription.TabIndex = 8;
+            this.rTBDescription.TabIndex = 9;
             this.rTBDescription.Text = "";
             // 
             // tBDirector
             // 
             this.tBDirector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBDirector.Location = new System.Drawing.Point(77, 155);
+            this.tBDirector.Location = new System.Drawing.Point(77, 326);
             this.tBDirector.Name = "tBDirector";
             this.tBDirector.Size = new System.Drawing.Size(134, 20);
-            this.tBDirector.TabIndex = 6;
+            this.tBDirector.TabIndex = 8;
             // 
             // cBLanguage
             // 
@@ -160,10 +164,10 @@
             "Russian",
             "English",
             "Azerbaijan"});
-            this.cBLanguage.Location = new System.Drawing.Point(77, 124);
+            this.cBLanguage.Location = new System.Drawing.Point(77, 295);
             this.cBLanguage.Name = "cBLanguage";
             this.cBLanguage.Size = new System.Drawing.Size(134, 21);
-            this.cBLanguage.TabIndex = 5;
+            this.cBLanguage.TabIndex = 7;
             // 
             // cBGenre
             // 
@@ -179,33 +183,33 @@
             "Drama",
             "Comedy",
             "Adventure"});
-            this.cBGenre.Location = new System.Drawing.Point(77, 95);
+            this.cBGenre.Location = new System.Drawing.Point(77, 266);
             this.cBGenre.Name = "cBGenre";
             this.cBGenre.Size = new System.Drawing.Size(134, 21);
-            this.cBGenre.TabIndex = 4;
+            this.cBGenre.TabIndex = 6;
             // 
             // mtBYear
             // 
-            this.mtBYear.Location = new System.Drawing.Point(77, 39);
+            this.mtBYear.Location = new System.Drawing.Point(77, 210);
             this.mtBYear.Mask = "0000";
             this.mtBYear.Name = "mtBYear";
             this.mtBYear.Size = new System.Drawing.Size(30, 20);
-            this.mtBYear.TabIndex = 2;
+            this.mtBYear.TabIndex = 4;
             this.mtBYear.ValidatingType = typeof(System.DateTime);
             // 
             // mtBRuntime
             // 
-            this.mtBRuntime.Location = new System.Drawing.Point(77, 67);
+            this.mtBRuntime.Location = new System.Drawing.Point(77, 238);
             this.mtBRuntime.Mask = "000";
             this.mtBRuntime.Name = "mtBRuntime";
             this.mtBRuntime.Size = new System.Drawing.Size(24, 20);
-            this.mtBRuntime.TabIndex = 3;
+            this.mtBRuntime.TabIndex = 5;
             this.mtBRuntime.ValidatingType = typeof(int);
             // 
             // lYearN
             // 
             this.lYearN.AutoSize = true;
-            this.lYearN.Location = new System.Drawing.Point(113, 42);
+            this.lYearN.Location = new System.Drawing.Point(113, 213);
             this.lYearN.Name = "lYearN";
             this.lYearN.Size = new System.Drawing.Size(27, 13);
             this.lYearN.TabIndex = 18;
@@ -215,15 +219,15 @@
             // 
             this.tBTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBTitle.Location = new System.Drawing.Point(77, 12);
+            this.tBTitle.Location = new System.Drawing.Point(77, 183);
             this.tBTitle.Name = "tBTitle";
             this.tBTitle.Size = new System.Drawing.Size(134, 20);
-            this.tBTitle.TabIndex = 1;
+            this.tBTitle.TabIndex = 3;
             // 
             // lMinuete
             // 
             this.lMinuete.AutoSize = true;
-            this.lMinuete.Location = new System.Drawing.Point(107, 70);
+            this.lMinuete.Location = new System.Drawing.Point(107, 241);
             this.lMinuete.Name = "lMinuete";
             this.lMinuete.Size = new System.Drawing.Size(26, 13);
             this.lMinuete.TabIndex = 20;
@@ -232,20 +236,20 @@
             // cBViewed
             // 
             this.cBViewed.AutoSize = true;
-            this.cBViewed.Location = new System.Drawing.Point(110, 271);
+            this.cBViewed.Location = new System.Drawing.Point(110, 442);
             this.cBViewed.Name = "cBViewed";
             this.cBViewed.Size = new System.Drawing.Size(61, 17);
-            this.cBViewed.TabIndex = 9;
+            this.cBViewed.TabIndex = 10;
             this.cBViewed.Text = "Viewed";
             this.cBViewed.UseVisualStyleBackColor = true;
             // 
             // bAddPic
             // 
-            this.bAddPic.Location = new System.Drawing.Point(13, 305);
+            this.bAddPic.Location = new System.Drawing.Point(13, 464);
             this.bAddPic.Margin = new System.Windows.Forms.Padding(2);
             this.bAddPic.Name = "bAddPic";
             this.bAddPic.Size = new System.Drawing.Size(55, 19);
-            this.bAddPic.TabIndex = 10;
+            this.bAddPic.TabIndex = 11;
             this.bAddPic.Text = "Add Pic";
             this.bAddPic.UseVisualStyleBackColor = true;
             this.bAddPic.Click += new System.EventHandler(this.bAddPic_Click);
@@ -254,18 +258,47 @@
             // 
             this.tbPicPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPicPath.Location = new System.Drawing.Point(74, 305);
+            this.tbPicPath.Location = new System.Drawing.Point(74, 464);
             this.tbPicPath.Name = "tbPicPath";
             this.tbPicPath.Size = new System.Drawing.Size(137, 20);
             this.tbPicPath.TabIndex = 22;
             this.tbPicPath.TabStop = false;
             // 
+            // tbSearch
+            // 
+            this.tbSearch.Location = new System.Drawing.Point(12, 10);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(135, 20);
+            this.tbSearch.TabIndex = 1;
+            // 
+            // bSearch
+            // 
+            this.bSearch.Location = new System.Drawing.Point(154, 10);
+            this.bSearch.Name = "bSearch";
+            this.bSearch.Size = new System.Drawing.Size(57, 23);
+            this.bSearch.TabIndex = 2;
+            this.bSearch.Text = "Search";
+            this.bSearch.UseVisualStyleBackColor = true;
+            this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
+            // 
+            // pbSearchResult
+            // 
+            this.pbSearchResult.Location = new System.Drawing.Point(12, 37);
+            this.pbSearchResult.Name = "pbSearchResult";
+            this.pbSearchResult.Size = new System.Drawing.Size(199, 140);
+            this.pbSearchResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSearchResult.TabIndex = 25;
+            this.pbSearchResult.TabStop = false;
+            // 
             // fAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 381);
+            this.ClientSize = new System.Drawing.Size(223, 526);
             this.ControlBox = false;
+            this.Controls.Add(this.pbSearchResult);
+            this.Controls.Add(this.bSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.tbPicPath);
             this.Controls.Add(this.bAddPic);
             this.Controls.Add(this.cBViewed);
@@ -293,6 +326,7 @@
             this.Name = "fAddEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add";
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearchResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +355,8 @@
         private System.Windows.Forms.CheckBox cBViewed;
         private System.Windows.Forms.Button bAddPic;
         private System.Windows.Forms.TextBox tbPicPath;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button bSearch;
+        private System.Windows.Forms.PictureBox pbSearchResult;
     }
 }
