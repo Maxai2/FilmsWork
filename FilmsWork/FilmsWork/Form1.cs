@@ -28,7 +28,7 @@ namespace FilmsWork
             for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
                 dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
 
-            dGTable.Refresh();
+            //dGTable.Refresh();
 
             NOLOAD:
 
@@ -73,35 +73,6 @@ namespace FilmsWork
             }
         }
 
-        private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            lbDescription.Items.Clear();
-
-            if (dGTable.CurrentRow != null)
-            {
-                Functions.getInstance().SelectedIndexForEdit = dGTable.CurrentRow.Index;
-                //if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title != dGTable.FirstDisplayedCell.Value)
-                //{
-
-                //rTBTitle.Text = Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title;
-
-                lbDescription.Items.Add($"Title: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Title}");
-                lbDescription.Items.Add($"Year: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Year}");
-                lbDescription.Items.Add($"Genre: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Genre}");
-                lbDescription.Items.Add($"Language: {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Language}");
-                lbDescription.Items.Add($"Director(s): {Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Director}");
-
-                rTBdescription.Text = Functions.getInstance().GetList()[dGTable.CurrentRow.Index].Description;
-
-                if (Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != null && Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath != "")
-                {
-                    pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[dGTable.CurrentRow.Index].PicturePath);
-                    pbPicture.Invalidate();
-                }
-                //}
-            }
-        }
-
         private void dGTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[e.RowIndex]);
@@ -121,9 +92,65 @@ namespace FilmsWork
             edit.Text = "Edit";
 
             edit.ShowDialog();
-
             edit.Dispose();
+
             Functions.getInstance().EditChange = false;
+            dGTable.Rows.Clear();
+
+            for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
+                dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
+        }
+
+        private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            lbDescription.Items.Clear();
+            rTBdescription.Clear();
+            pbPicture.Image = null;
+
+            if (dGTable.CurrentRow != null)
+            {
+                int index = Functions.getInstance().SelectedIndexForEdit = e.Row.Index;
+                bool found = true;
+
+                string ListName = Functions.getInstance().GetList()[index].Title;
+                string DGName = dGTable[0, index].Value.ToString();
+
+                if (ListName == DGName)
+                    found = false;
+
+                while (true)
+                {
+                    if (found)
+                    {
+                        lbDescription.Items.Add($"Title: {Functions.getInstance().GetList()[index].Title}");
+                        lbDescription.Items.Add($"Year: {Functions.getInstance().GetList()[index].Year}");
+                        lbDescription.Items.Add($"Genre: {Functions.getInstance().GetList()[index].Genre}");
+                        lbDescription.Items.Add($"Language: {Functions.getInstance().GetList()[index].Language}");
+                        lbDescription.Items.Add($"Director(s): {Functions.getInstance().GetList()[index].Director}");
+
+                        rTBdescription.Text = Functions.getInstance().GetList()[index].Description;
+
+                        if (Functions.getInstance().GetList()[index].PicturePath != null && Functions.getInstance().GetList()[index].PicturePath != "")
+                        {
+                            pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[index].PicturePath);
+                            pbPicture.Invalidate();
+                        }
+
+                        break;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
+                        {
+                            if (DGName == Functions.getInstance().GetList()[i].Title)
+                            {
+                                index = i;
+                                found = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

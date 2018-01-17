@@ -35,8 +35,6 @@ namespace FilmsWork
 
         private void bOk_Click(object sender, EventArgs e)  
         {
-            //string path = @"Picture\skype.jpg";
-
             if (Functions.getInstance().EditChange)
                 Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit]);
 

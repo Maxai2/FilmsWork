@@ -38,9 +38,9 @@
             this.cRuntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cViewed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pDescriptionPhoto = new System.Windows.Forms.Panel();
+            this.rTBdescription = new System.Windows.Forms.RichTextBox();
             this.pbPicture = new System.Windows.Forms.PictureBox();
             this.lbDescription = new System.Windows.Forms.ListBox();
-            this.rTBdescription = new System.Windows.Forms.RichTextBox();
             this.tlPanel.SuspendLayout();
             this.tlPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGTable)).BeginInit();
@@ -139,7 +139,7 @@
             this.dGTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGTable.Size = new System.Drawing.Size(328, 457);
             this.dGTable.TabIndex = 1;
-            this.dGTable.TabStop = false;
+            this.dGTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dGTable_RowsRemoved);
             this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
             // 
             // cTitle
@@ -176,6 +176,15 @@
             this.pDescriptionPhoto.Size = new System.Drawing.Size(330, 420);
             this.pDescriptionPhoto.TabIndex = 2;
             // 
+            // rTBdescription
+            // 
+            this.rTBdescription.Location = new System.Drawing.Point(3, 200);
+            this.rTBdescription.Name = "rTBdescription";
+            this.rTBdescription.Size = new System.Drawing.Size(318, 217);
+            this.rTBdescription.TabIndex = 2;
+            this.rTBdescription.TabStop = false;
+            this.rTBdescription.Text = "";
+            // 
             // pbPicture
             // 
             this.pbPicture.Location = new System.Drawing.Point(4, 9);
@@ -194,14 +203,7 @@
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(207, 186);
             this.lbDescription.TabIndex = 0;
-            // 
-            // rTBdescription
-            // 
-            this.rTBdescription.Location = new System.Drawing.Point(3, 200);
-            this.rTBdescription.Name = "rTBdescription";
-            this.rTBdescription.Size = new System.Drawing.Size(318, 217);
-            this.rTBdescription.TabIndex = 2;
-            this.rTBdescription.Text = "";
+            this.lbDescription.TabStop = false;
             // 
             // FilmsView
             // 

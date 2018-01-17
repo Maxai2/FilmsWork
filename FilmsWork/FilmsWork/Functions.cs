@@ -38,6 +38,19 @@ namespace FilmsWork
 
         public List<Film> GetList() => FilmList;
 
+        public void ClearListIndex(int index)
+        {
+            FilmList[index].Description = "";
+            FilmList[index].Director = "";
+            FilmList[index].Genre = "";
+            FilmList[index].Language = "";
+            FilmList[index].PicturePath = "";
+            FilmList[index].Runtime = 0;
+            FilmList[index].Title = "";
+            FilmList[index].Viewed = false;
+            FilmList[index].Year = 0;
+        }
+
         public void LoadList()
         {
             BinaryFormatter formatter = new BinaryFormatter();
