@@ -30,17 +30,32 @@ namespace FilmsWork
                 rTBDescription.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].Description;
                 cBViewed.Checked = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].Viewed;
                 tbPicPath.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].PicturePath;
+                pbSearchResult.Image = Image.FromFile(tbPicPath.Text);
             }
         }
 
         private void bOk_Click(object sender, EventArgs e)  
         {
             if (Functions.getInstance().EditChange)
-                Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit]);
+            {
+                int index = Functions.getInstance().SelectedIndexForEdit;
 
-            Film temp = new Film(tBTitle.Text, Convert.ToInt32(mtBYear.Text), Convert.ToInt32(mtBRuntime.Text), cBGenre.Text, cBLanguage.Text, tBDirector.Text, rTBDescription.Text, cBViewed.Checked, tbPicPath.Text);
+                Functions.getInstance().GetList()[index].Description = rTBDescription.Text;
+                Functions.getInstance().GetList()[index].Director = tBDirector.Text;
+                Functions.getInstance().GetList()[index].Genre = cBGenre.Text;
+                Functions.getInstance().GetList()[index].Language = cBLanguage.Text;
+                Functions.getInstance().GetList()[index].PicturePath = tbPicPath.Text;
+                Functions.getInstance().GetList()[index].Runtime = Convert.ToInt32(mtBRuntime.Text);
+                Functions.getInstance().GetList()[index].Title = tBTitle.Text;
+                Functions.getInstance().GetList()[index].Viewed = cBViewed.Checked;
+                Functions.getInstance().GetList()[index].Year = Convert.ToInt32(mtBYear.Text);
+            }
+            else
+            {
+                Film temp = new Film(tBTitle.Text, Convert.ToInt32(mtBYear.Text), Convert.ToInt32(mtBRuntime.Text), cBGenre.Text, cBLanguage.Text, tBDirector.Text, rTBDescription.Text, cBViewed.Checked, tbPicPath.Text);
 
-            Functions.getInstance().AddFilm(temp);
+                Functions.getInstance().AddFilm(temp);
+            }
         }
 
         private void bCancel_Click(object sender, EventArgs e)
@@ -97,19 +112,30 @@ namespace FilmsWork
                 if (!File.Exists(@"pics\"))
                     Directory.CreateDirectory(@"pics\");
 
-                webClient.DownloadFile((string)obj.Poster, $@"pics\{obj.imdbID}.jpg");
-                pbSearchResult.Image = Image.FromFile($@"pics\{obj.imdbID}.jpg");
+                if (obj.Poster != "N/A")
+                {
+                    webClient.DownloadFile((string)obj.Poster, $@"pics\{obj.imdbID}.jpg");
+                    pbSearchResult.Image = Image.FromFile($@"pics\{obj.imdbID}.jpg");
+                    int length = tbPicPath.Text.Length;
+                    tbPicPath.Text = tbPicPath.Text.Remove(length - 13);
+                    tbPicPath.Text += "pics\\" + obj.imdbID + ".jpg";
+                    tbPicPath.Text = Application.ExecutablePath;
+                }
+
                 tBTitle.Text = obj.Title;
-                mtBYear.Text = obj.Year;
-                mtBRuntime.Text = obj.Runtime;
+
+                mtBYear.Text = "0";
+                if (obj.Year != "N/A")
+                    mtBYear.Text = obj.Year;
+
+                mtBRuntime.Text = "0";
+                if (obj.Runtime != "N/A")
+                    mtBRuntime.Text = obj.Runtime;
+
                 cBGenre.Text = obj.Genre;
                 cBLanguage.Text = obj.Language;
                 tBDirector.Text = obj.Director;
                 rTBDescription.Text = obj.Plot;
-                tbPicPath.Text = Application.ExecutablePath;
-                int length = tbPicPath.Text.Length;
-                tbPicPath.Text = tbPicPath.Text.Remove(length - 13);
-                tbPicPath.Text += "pics\\" + obj.imdbID + ".jpg";
             }
         }
     }
