@@ -29,9 +29,13 @@ namespace FilmsWork
                 tBDirector.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].Director;
                 rTBDescription.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].Description;
                 cBViewed.Checked = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].Viewed;
-                tbPicPath.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].PicturePath;
-                pbSearchResult.Image = Image.FromFile(tbPicPath.Text);
-            }
+
+                if (Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].PicturePath == " " || Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].PicturePath == null)
+                {
+                    tbPicPath.Text = Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit].PicturePath;
+                    pbSearchResult.Image = Image.FromFile(tbPicPath.Text);
+                }
+            } 
         }
 
         private void bOk_Click(object sender, EventArgs e)  
@@ -61,6 +65,9 @@ namespace FilmsWork
         private void bCancel_Click(object sender, EventArgs e)
         {
             Functions.getInstance().CancelAdd = false;
+
+            if (Functions.getInstance().EditChange)
+                Functions.getInstance().CancelEdit = false;
         }
 
         private void bAddPic_Click(object sender, EventArgs e)
@@ -116,10 +123,10 @@ namespace FilmsWork
                 {
                     webClient.DownloadFile((string)obj.Poster, $@"pics\{obj.imdbID}.jpg");
                     pbSearchResult.Image = Image.FromFile($@"pics\{obj.imdbID}.jpg");
+                    tbPicPath.Text = Application.ExecutablePath;
                     int length = tbPicPath.Text.Length;
                     tbPicPath.Text = tbPicPath.Text.Remove(length - 13);
                     tbPicPath.Text += "pics\\" + obj.imdbID + ".jpg";
-                    tbPicPath.Text = Application.ExecutablePath;
                 }
 
                 tBTitle.Text = obj.Title;

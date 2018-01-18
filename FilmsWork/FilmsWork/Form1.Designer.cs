@@ -120,7 +120,6 @@
             this.bSearch.TabIndex = 4;
             this.bSearch.Text = "Search";
             this.bSearch.UseVisualStyleBackColor = true;
-            this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
             // 
             // dGTable
             // 
@@ -140,7 +139,7 @@
             this.dGTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGTable.Size = new System.Drawing.Size(328, 457);
             this.dGTable.TabIndex = 1;
-            this.dGTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dGTable_RowStateChanged);
+            this.dGTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGTable_CellClick);
             this.dGTable.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dGTable_KeyDown);
             // 
             // cTitle
@@ -199,7 +198,7 @@
             // lbDescription
             // 
             this.lbDescription.FormattingEnabled = true;
-            this.lbDescription.Location = new System.Drawing.Point(117, 9);
+            this.lbDescription.Location = new System.Drawing.Point(114, 9);
             this.lbDescription.Margin = new System.Windows.Forms.Padding(2);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(207, 186);

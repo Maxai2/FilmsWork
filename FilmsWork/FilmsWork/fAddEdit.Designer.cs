@@ -283,7 +283,7 @@
             // 
             // pbSearchResult
             // 
-            this.pbSearchResult.Location = new System.Drawing.Point(12, 37);
+            this.pbSearchResult.Location = new System.Drawing.Point(12, 36);
             this.pbSearchResult.Name = "pbSearchResult";
             this.pbSearchResult.Size = new System.Drawing.Size(199, 140);
             this.pbSearchResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

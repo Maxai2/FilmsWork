@@ -46,7 +46,7 @@ namespace FilmsWork
 
             if (Functions.getInstance().CancelAdd)
             {
-                //dGTable.Invalidate();
+                dGTable.Invalidate();
                 int lastIndex = Functions.getInstance().FilmCount() - 1;
 
                 dGTable.Rows.Add(Functions.getInstance().GetFilm(lastIndex).Title, Functions.getInstance().GetFilm(lastIndex).Runtime, Functions.getInstance().GetFilm(lastIndex).Viewed);
@@ -75,6 +75,8 @@ namespace FilmsWork
 
         private void bEdit_Click(object sender, EventArgs e)
         {
+            Functions.getInstance().CancelEdit = true;
+
             if (Functions.getInstance().FilmCount() == 0)
             {
                 MessageBox.Show("No films to edit!");
@@ -86,25 +88,29 @@ namespace FilmsWork
 
             edit.ShowDialog();
             edit.Dispose();
-
             Functions.getInstance().EditChange = false;
 
-            dGTable.Rows.Clear();
+            if (Functions.getInstance().CancelEdit)
+            {
+                dGTable.Rows.Clear();
 
-            for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
-                dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
+                for (int i = 0; i < Functions.getInstance().FilmCount(); i++)
+                    dGTable.Rows.Add(Functions.getInstance().GetFilm(i).Title, Functions.getInstance().GetFilm(i).Runtime, Functions.getInstance().GetFilm(i).Viewed);
+            }
         }
 
-        private void dGTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dGTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             lbDescription.Items.Clear();
             rTBdescription.Clear();
             pbPicture.Image = null;
 
             if (dGTable.CurrentRow != null)
             {
-                int cu = dGTable.RowCount;
-                int index = Functions.getInstance().SelectedIndexForEdit = e.Row.Index;
+                int index = Functions.getInstance().SelectedIndexForEdit = e.RowIndex;
                 bool found = true;
 
                 string ListName = Functions.getInstance().GetList()[index].Title;
@@ -130,7 +136,7 @@ namespace FilmsWork
                             pbPicture.Image = Image.FromFile(Functions.getInstance().GetList()[index].PicturePath);
                             pbPicture.Invalidate();
                         }
-
+                         
                         break;
                     }
                     else
@@ -141,6 +147,7 @@ namespace FilmsWork
                             {
                                 index = i;
                                 found = true;
+                                break;
                             }
                         }
                     }
@@ -153,15 +160,11 @@ namespace FilmsWork
             if (e.KeyCode == Keys.Delete)
             {
                 Functions.getInstance().GetList().Remove(Functions.getInstance().GetList()[Functions.getInstance().SelectedIndexForEdit]);
-                //dGTable.Rows.RemoveAt(Functions.getInstance().SelectedIndexForEdit);
+                lbDescription.Items.Clear();
+                rTBdescription.Clear();
                 pbPicture.Image = null;
                 pbPicture.Invalidate();
             }
-        }
-
-        private void bSearch_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

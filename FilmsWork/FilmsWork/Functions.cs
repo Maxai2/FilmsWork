@@ -17,12 +17,14 @@ namespace FilmsWork
 
         public static Functions getInstance()
         {
-            if (instance == null) 
+            if (instance == null)  
                 instance = new Functions();
             return instance;
         }
 
         public bool CancelAdd { get; set; }
+
+        public bool CancelEdit { get; set; }
 
         public bool EditChange { get; set; }
 
